@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import authImage from "../assets/images/authImage.png";
+import authImage from "../../assets/images/authImage.png";
 
 function RegisterScreen() {
     const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function RegisterScreen() {
     const navigate = useNavigate();
 
     function cadastrar() {
-        const URL = "https://localhost:5020/signup";
+        const URL = "http://localhost:5020/signup";
 
         const promise = axios.post(URL, {
             email: email,
@@ -28,6 +28,7 @@ function RegisterScreen() {
 
         promise.then(response => {
             const { data } = response;
+            console.log(data);
             navigate("/");
         });
         promise.catch(err => {
@@ -74,17 +75,17 @@ const Container = styled.div`
     }
 
     img {
-        width: 302px;
-        height: 345px;
+        width: 272px;
+        height: 315px;
     }
 `;
 
 const InputsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 0px;
-    gap: 30px;
+    gap: 15px;
     width: 390px;
     height: 222px;
     left: calc(50% - 390px/2);
@@ -123,19 +124,20 @@ const Button = styled.div`
     font-size: 20px;
     line-height: 27px;
     color: #FFFFFF;
+    cursor: pointer;
 `;
 
 const StyledLink = styled(Link)`
     font-family: 'Oswald';
-    height: 17px;
     font-style: normal;
     font-weight: 400;
-    font-size: 13.976px;
+    font-size: 16px;
     line-height: 17px;
     text-align: center;
     text-decoration-line: underline;
-    margin-top: 25px;
-    color: #FFFFFF;
+    margin-top: 20px;
+    color: red;
+    cursor: pointer;
 `;
 
 export default RegisterScreen;
