@@ -8,7 +8,7 @@ import InsertDistricts from "./pages/homePage/insertDistricts/InsertDistricts";
 import GeneralResults from './pages/homePage/generalResults/generalResults';
 import GraficResultsDistricts from './pages/homePage/graficResultsDistricts/graficResultsDistricts';
 import GraficResultsStreats from './pages/homePage/graficResultsStreats/graficResultsStreats';
-
+import InsertStreats from './pages/homePage/insertStreats/insertStreats';
 
 function App(){
     const [data, setData] = useState("");
@@ -25,6 +25,7 @@ function App(){
                     <Route path="/home/GeneralResults" element={<GeneralResults />}> </Route>
                     <Route path="/home/graficResultsDistricts" element={<GraficResultsDistricts />}> </Route>
                     <Route path="/home/GraficResultsStreats" element={<GraficResultsStreats />}> </Route>
+                    <Route path="/home/InsertStreats" element={<InsertStreats />}> </Route>
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

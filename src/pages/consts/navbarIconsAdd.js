@@ -21,6 +21,6 @@ export const navbarIconsAdd = [
         id: 2,
         icon: <AddHomeIcon />,
         label: 'Cadastrar Ruas', 
-        route: 'insertStreats'
+        route: 'InsertStreats'
     }
 ]
