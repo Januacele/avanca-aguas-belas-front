@@ -1,11 +1,14 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
+import NavBarOption from "../navBarOption";
 
-function generalResults(){
+const GeneralResults = () => {
     return(
-         <div > 
-            This is my general results page screen 
-         </div> 
+        <Grid style={{marginLeft: '500px'}}>
+        <NavBarOption />
+         This is my GeneralResults page screen 
+        </Grid>  
     );
 }
 
-export default generalResults
+export default GeneralResults

@@ -19,8 +19,8 @@ export const navbarIconsInfo = [
     {
         id: 2,
         icon: <AutoAwesomeMotionIcon />,
-        label: 'generalResults', 
-        route: 'route'
+        label: 'Resultados Gerais', 
+        route: 'GeneralResults'
     },
     {
         id: 3,
