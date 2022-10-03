@@ -13,8 +13,8 @@ export const navbarIconsInfo = [
     {
         id: 1,
         icon: <LeaderboardIcon />,
-        label: 'graficResultsDistricts', 
-        route: 'route'
+        label: 'Resultados Gráficos Bairros', 
+        route: 'GraficResultsDistricts'
     },
     {
         id: 2,

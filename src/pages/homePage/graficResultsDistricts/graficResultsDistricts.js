@@ -1,10 +1,14 @@
-function graficResultsDistricts(){
+import React from 'react';
+import Grid from '@mui/material/Grid';
+import NavBarOption from "../navBarOption";
+
+const GraficResultsDistricts = () => {
     return(
-        <>
-         <h1> This is my grafic results districts page screen </h1>
-        </>
-       
+        <Grid style={{marginLeft: '500px'}}>
+        <NavBarOption />
+         This is my graficResultsDistricts page screen 
+        </Grid>  
     );
 }
 
-export default graficResultsDistricts
+export default GraficResultsDistricts

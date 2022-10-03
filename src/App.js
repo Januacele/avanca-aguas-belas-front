@@ -6,6 +6,7 @@ import RegisterScreen from "./pages/authPage/RegisterScreen";
 import HomeScreen from "./pages/homePage/homeScreen/homeScreen";
 import InsertDistricts from "./pages/homePage/insertDistricts/InsertDistricts";
 import GeneralResults from './pages/homePage/generalResults/generalResults';
+import GraficResultsDistricts from './pages/homePage/graficResultsDistricts/graficResultsDistricts';
 
 function App(){
     const [data, setData] = useState("");
@@ -20,6 +21,7 @@ function App(){
                     <Route path="/home" element={<HomeScreen />}> </Route>
                     <Route path="/home/insertDistricts" element={<InsertDistricts />}> </Route>
                     <Route path="/home/GeneralResults" element={<GeneralResults />}> </Route>
+                    <Route path="/home/graficResultsDistricts" element={<GraficResultsDistricts />}> </Route>
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
