@@ -3,7 +3,8 @@ import { useState } from "react";
 import UserContext from "../src/contexts/UserContext";
 import LoginScreen from "./pages/authPage/LoginScreen";
 import RegisterScreen from "./pages/authPage/RegisterScreen";
-import HomeScreen from "./pages/homePage/HomeScreen";
+import HomeScreen from "./pages/homePage/homeScreen/homeScreen";
+import InsertDistricts from "./pages/homePage/insertDistricts/InsertDistricts";
 
 
 function App(){
@@ -17,6 +18,7 @@ function App(){
                     <Route path="/" element={<LoginScreen />}> </Route>
                     <Route path="/register" element={<RegisterScreen />}> </Route>
                     <Route path="/home" element={<HomeScreen />}> </Route>
+                    <Route path="/home/insertDistricts" element={<InsertDistricts />}> </Route>
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
