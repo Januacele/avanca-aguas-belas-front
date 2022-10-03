@@ -8,7 +8,7 @@ export const navbarIconsInfo = [
         id: 0,
         icon: <LeaderboardIcon />,
         label: 'Resultados Gráficos Ruas', 
-        route: 'graficResultsStreats'
+        route: 'GraficResultsStreats'
     },
     {
         id: 1,
