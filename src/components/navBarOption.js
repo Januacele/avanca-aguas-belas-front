@@ -7,27 +7,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { navbarIconsAdd } from '../consts/navbarIconsAdd';
-import { navbarIconsInfo } from '../consts/navbarIconsInfos';
+import { navbarIconsAdd } from '../pages/consts/navbarIconsAdd';
+import { navbarIconsInfo } from '../pages/consts/navbarIconsInfos';
 import { useNavigate } from "react-router-dom";
+import { navBarStyles } from "../pages/consts/styles";
 
-const drawerWidth = 260;
 
-function NavBarOption() {
+export const NavBarOption = () => {
     const navigate = useNavigate();
 
     return (
         <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            backgroundColor: '#101F33',
-            color: '#FFFFFF'
-          },
-        }}
+        sx={navBarStyles.drawer}
         variant="permanent"
         anchor="left"
       >
@@ -41,10 +32,12 @@ function NavBarOption() {
                 onClick = {() => navigate(item.route)}
             >
               <ListItemButton>
-                <ListItemIcon sx ={{color:'#FFFFFF'}}>
+                <ListItemIcon sx = { navBarStyles.icons }>
                   {item.icon}
                   </ListItemIcon >
-                <ListItemText primary={item.label} />
+                <ListItemText 
+                  sx = { navBarStyles.text }
+                  primary = {item.label} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -58,10 +51,12 @@ function NavBarOption() {
                 onClick = {() => navigate(item.route)}
             >
               <ListItemButton>
-                <ListItemIcon sx ={{color:'#FFFFFF'}}>
+                <ListItemIcon sx ={ navBarStyles.icons }>
                   {item.icon}
                 </ListItemIcon >
-                <ListItemText primary={item.label} />
+                <ListItemText 
+                  sx = { navBarStyles.text }
+                  primary={item.label} />
               </ListItemButton>
             </ListItem>
           ))}
