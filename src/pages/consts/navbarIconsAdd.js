@@ -9,18 +9,18 @@ export const navbarIconsAdd = [
         id: 0,
         icon: <HomeIcon />,
         label: 'Página Inicial', 
-        route: 'home'
+        route: '/home'
     },
     {
         id: 1,
         icon: <AddHomeWorkIcon />,
         label: 'Cadastrar Bairros', 
-        route: 'InsertDistricts'
+        route: '/home/insertDistricts'
     },
     {
         id: 2,
         icon: <AddHomeIcon />,
         label: 'Cadastrar Ruas', 
-        route: 'InsertStreats'
+        route: '/home/InsertStreats'
     }
 ]
