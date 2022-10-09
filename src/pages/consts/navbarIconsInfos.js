@@ -8,19 +8,19 @@ export const navbarIconsInfo = [
         id: 0,
         icon: <LeaderboardIcon />,
         label: 'Resultados Gráficos Ruas', 
-        route: 'GraficResultsStreats'
+        route: '/home/GraficResultsStreats'
     },
     {
         id: 1,
         icon: <LeaderboardIcon />,
         label: 'Resultados Gráficos Bairros', 
-        route: 'GraficResultsDistricts'
+        route: '/home/graficResultsDistricts'
     },
     {
         id: 2,
         icon: <AutoAwesomeMotionIcon />,
         label: 'Resultados Gerais', 
-        route: 'GeneralResults'
+        route: '/home/GeneralResults'
     },
     {
         id: 3,
