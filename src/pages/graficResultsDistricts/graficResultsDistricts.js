@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import NavBarOption from "../navBarOption";
+import NavBarOption from "../../components/navBarOption";
 
 const GraficResultsDistricts = () => {
     return(
