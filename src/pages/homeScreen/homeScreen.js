@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import NavBarOption from '../../components/navBarOption';
-import { Outlet } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Header from '../../components/Header/Header';
 import { useLocation } from 'react-router-dom'; 
@@ -22,7 +21,6 @@ function HomeScreen() {
     <Grid container>
       <NavBarOption />
       <Header title={title} />
-      <Outlet />
 
       <Box sx={homeScreenStyles.wrapper}>
         <StandardImageList />
