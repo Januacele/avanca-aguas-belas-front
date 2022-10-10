@@ -1,100 +1,97 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import NavBarOption from '../../components/navBarOption';
+import Header from '../../components/Header/Header';
+import District from './nameDistricts';
+import InsertData from './insertData';
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from '../../contexts/UserContext';
+import { iconsDistrictStreatStyle } from './styles';
 
-const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={10} square {...props} />
-))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-    marginLeft: '350px',
-  '&:not(:last-child)': {
-    borderBottom: 0,
-  },
-  '&:before': {
-    display: 'none',
-  },
- 
-}));
+export default function InsertDistrict() {
 
-const AccordionSummary = styled((props) => (
-  <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-    {...props}
-  />
-))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
-  },
-  '& .MuiAccordionSummary-content': {
-    marginLeft: theme.spacing(1),
-  },
-}));
+    const navigate = useNavigate();
+    const [districtName, setDistrictName] = useState([]);
+    const { token, setToken } = useContext(UserContext);
 
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(10),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
-}));
+    const localToken = localStorage.getItem("token");
+    const URL = "http://localhost:5020/";
 
-export function InsertDistricts() {
-  const [expanded, setExpanded] = React.useState('panel1');
 
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+    useEffect(() => {
+        if (!localToken) {
+          navigate("/");
+        } else {
+          setToken({ ...localToken });
+        }
+        getDistrictsName();
+    }, [setToken, token.token, localToken, navigate]);
+      
+    
+    async function getDistrictsName() {
+      try {
+        const config = {
+          headers: { Authorization: `Bearer ${(localToken)}` },
+        };
+        
+        const response = await axios.get(`${URL}districts`, config);
+          setDistrictName(response.data);
+      } catch (e) {
+          setDistrictName(["error"]);
+          console.log(e);
+        }
+      }
+          
+        function showDistricts() {
+            if (districtName.length > 0) {
+              return districtName.map(district => {
+                const { id, districtName } = district;
+                return <District key={id} id={id} districtName={districtName} />;
+              });
+            } else {
+              return <p>Carregando Bairros...</p>;
+            }
+          }
+
+  const districtsOnScreen = showDistricts();
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Collapsible Group Item #1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      <Header />
+      <NavBarOption />
+      <Container
+      sx={iconsDistrictStreatStyle.text}>
+        <InsertData />
+        <h1>Insira os dados dos bairros</h1>
+        <Districts>
+          {districtsOnScreen}
+          {/* {districtName.map(district => {
+            const { id, districtName } = district;
+            return <District key={id} id={id} poster={districtName} />;
+          })} */}
+        </Districts>
+      </Container>
     </div>
   );
+
 }
 
+const Districts = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 250px;
+`;
 
-export default InsertDistricts;
+const Container = styled.div`
+margin-top: 20px;
+  h1 {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
