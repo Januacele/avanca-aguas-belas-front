@@ -110,7 +110,7 @@ const Button = styled.div`
     gap: 206px;
     width: 388px;
     height: 54px;
-    background: #EF3A11;
+    background: #293845;
     border: 1px solid #000000;
     border-radius: 5px;
     font-family: 'Open Sans';
