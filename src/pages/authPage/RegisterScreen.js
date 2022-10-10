@@ -40,12 +40,12 @@ function RegisterScreen() {
         <Container>
            <img src={authImage}/>
             <InputsContainer>
-                <input typeof="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input typeof="text" placeholder="senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
-                <input typeof="text" placeholder="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-                <input typeof="text" placeholder="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                <input typeof="text" placeholder="secretaria" value={secretaria} onChange={(e) => setSecretaria(e.target.value)} />
-                <Button onClick={cadastrar}>Cadastrar</Button>
+                <input data-cy="input-email" typeof="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input data-cy="input-password" typeof="text" placeholder="senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                <input data-cy="input-name" typeof="text" placeholder="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                <input data-cy="input-cpf" typeof="text" placeholder="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+                <input data-cy="input-secretary" typeof="text" placeholder="secretaria" value={secretaria} onChange={(e) => setSecretaria(e.target.value)} />
+                <Button data-cy="input-submit" onClick={cadastrar}>Cadastrar</Button>
 
                 <StyledLink to="/">Voltar para o login</StyledLink>
             </InputsContainer>
@@ -115,7 +115,7 @@ const Button = styled.div`
     gap: 206px;
     width: 388px;
     height: 54px;
-    background: #EF3A11;
+    background: #293845;
     border: 1px solid #000000;
     border-radius: 5px;
     font-family: 'Open Sans';
