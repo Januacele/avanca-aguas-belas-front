@@ -1,24 +1,69 @@
-import React from 'react'
-import GridWrapper from '../../common/gridWrapper/GridWrapper';
-import BasicCard from '../../common/basicCard/BasicCard';
-import ProgressStepper from '../../common/progressStepper/ProgressStepper';
+import React from 'react';
+import { Chart } from "react-google-charts";
+import Grid from '@mui/material/Grid';
+import NavBarOption from "../../components/navBarOption";
+import Header from "../../components/Header/Header";
+import styled from "styled-components";
 
-const steps = ['Step 1', 'Step 2', 'Step 3'];
-const stepDescription = ['Description 1', 'Description 2', 'Description 3'];
+const GeneralResults = () => {
 
-export const GeneralResults = () => {
-    return (
-        <GridWrapper>
-            <BasicCard
-                content={
-                    <ProgressStepper
-                        steps={steps}
-                        stepDescription={stepDescription}
-                    />
-                } 
-            />
-        </GridWrapper>
-    )
+
+
+   const data = [
+        ["Bairros", "Hours per Day"],
+        ["Bairro1", 11],
+        ["Bairro2", 2],
+        ["Bairro3", 2],
+        ["Bairro4", 2],
+        ["Bairro5", 7],
+      ];
+      
+     const options = {
+        title: "Exemplo - Bairros com Saneamento Básico",
+      };
+      
+    function CreatChart() {
+        return (
+          <Chart
+            chartType="PieChart"
+            data={data}
+            options={options}
+            width={"80%"}
+            height={"350px"}
+          />
+        );
+      }
+
+    return(
+      <>
+        <Header />
+        <NavBarOption />
+          <Container>
+              <h1>Página em Construção</h1>
+          </Container>     
+        <Grid style={{marginLeft: '400px', marginTop: '20px'}}>
+          <CreatChart />
+        </Grid>
+      </>
+        
+    );
 }
+
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+
+    h1{
+        font-size: 28px;
+
+    }
+`;
+
 
 export default GeneralResults
